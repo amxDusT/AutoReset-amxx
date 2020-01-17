@@ -150,7 +150,6 @@ public plugin_end()
     server_exec();
 
     SQL_QueryAndIgnore( connect, "UPDATE `%s` SET `next_reset`=UNIX_TIMESTAMP()+%d, `last_reset`=UNIX_TIMESTAMP() WHERE `hostname`='%s'", table, ( Time[ pResetType ] * pResetTime ), hostname );
-    log_amx( "UPDATED LAST RESET AND NEXT RESET 2" );
     SQL_FreeHandle( connect );
     SQL_FreeHandle( tuple );
 }
