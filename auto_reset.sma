@@ -134,7 +134,6 @@ public plugin_end()
     if( get_cvar_num( "csstats_reset" ) )
     {
         SQL_QueryAndIgnore( connect, "UPDATE `%s` SET `last_reset`=UNIX_TIMESTAMP(), `next_reset`=%d WHERE `hostname`='%s'", table, get_systime() + ( Time[ pResetType ] * pResetTime ), hostname );
-        log_amx( "UPDATED LAST RESET AND NEXT RESET 1" );
         return;
     }
     new Handle:query = SQL_PrepareQuery( connect, "SELECT * FROM `%s` WHERE `hostname`='%s' AND `next_reset`<UNIX_TIMESTAMP() AND `next_reset`>86400;", table, hostname );
